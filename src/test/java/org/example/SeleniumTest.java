@@ -11,16 +11,28 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SeleniumTest {
+public class SeleniumTest {
 
-    WebDriver driver;
+    private WebDriver driver;
+
+    @BeforeAll
+    public static void setup() {
+        WebDriverManager.firefoxdriver().create();
+    }
 
     @BeforeEach
-    void setUp() {
-            driver = WebDriverManager.firefoxdriver().create();
+    public void setUp() {
+
+        FirefoxOptions options = new FirefoxOptions();
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--headless");
+        driver = new FirefoxDriver(options);
+        driver.get("http://localhost:9999/");
     }
 
     @AfterEach
