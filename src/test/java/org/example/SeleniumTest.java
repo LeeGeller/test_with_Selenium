@@ -27,8 +27,8 @@ class SeleniumTest {
     void setUp() {
 
         FirefoxOptions options = new FirefoxOptions();
-        options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--headless");
+        options.setHeadless(false);
 
         driver = new FirefoxDriver();
     }
