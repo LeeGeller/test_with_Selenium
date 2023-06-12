@@ -21,17 +21,17 @@ public class SeleniumTest {
 
     @BeforeAll
     public static void setup() {
-        WebDriverManager.firefoxdriver().create();
+        WebDriverManager.chromedriver().create();
     }
 
     @BeforeEach
     public void setUp() {
 
-        FirefoxOptions options = new FirefoxOptions();
+        ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
-        driver = new FirefoxDriver(options);
+        driver = new ChromeDriver(options);
         driver.get("http://localhost:9999/");
     }
 
