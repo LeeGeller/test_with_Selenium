@@ -30,7 +30,7 @@ class SeleniumTest {
         options.addArguments("--headless");
         options.addArguments("--sandbox");
 
-        driver = new FirefoxDriver();
+        driver = new ChromeDriver();
     }
 
     @AfterEach
