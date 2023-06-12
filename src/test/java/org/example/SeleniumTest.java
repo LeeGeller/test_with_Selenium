@@ -15,35 +15,32 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class SeleniumTest {
+class SeleniumTest {
 
     private WebDriver driver;
 
     @BeforeAll
-    public static void setup() {
-        WebDriverManager.chromedriver().create();
+    static void setUpAll() {
+        WebDriverManager.firefoxdriver().setup();
     }
-
     @BeforeEach
-    public void setUp() {
+    void setUp() {
 
-        ChromeOptions options = new ChromeOptions();
+        FirefoxOptions options = new FirefoxOptions();
         options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--no-sandbox");
         options.addArguments("--headless");
-        driver = new ChromeDriver(options);
-        driver.get("http://localhost:9999/");
+
+        driver = new FirefoxDriver();
     }
 
     @AfterEach
-    void teardown() {
+    void tearDown() {
         driver.quit();
     }
 
     @Test
     void shouldWorkWithValidPath() {
-        driver.get("http://localhost:9999");
-
+        driver.get("http://localhost:7777");
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Фамилия Имя");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79998887700");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
