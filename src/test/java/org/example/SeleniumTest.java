@@ -26,7 +26,7 @@ class SeleniumTest {
     @BeforeEach
     void setUp() {
 
-        FirefoxOptions options = new FirefoxOptions();
+        ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
         options.addArguments("--sandbox");
 
