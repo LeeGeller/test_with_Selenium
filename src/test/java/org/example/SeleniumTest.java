@@ -28,6 +28,7 @@ class SeleniumTest {
 
         FirefoxOptions options = new FirefoxOptions();
         options.addArguments("--headless");
+        options.addArguments("--no-sandbox");
         options.setHeadless(false);
 
         driver = new FirefoxDriver();
