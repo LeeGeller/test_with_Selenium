@@ -22,7 +22,7 @@ class SeleniumTest {
     @BeforeAll
     static void setUpAll() {
         //WebDriverManager.firefoxdriver().setup();
-        WebDriverManager.chromedriver().setup();
+        WebDriverManager.chromiumdriver().setup();
     }
     @BeforeEach
     void setUp() {
@@ -53,8 +53,6 @@ class SeleniumTest {
         String actual = driver.findElement(By.cssSelector("[data-test-id='order-success']")).getText().trim();
 
         assertEquals(expected, actual);
-
     }
-
 
 }
