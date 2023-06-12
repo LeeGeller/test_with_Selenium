@@ -21,19 +21,21 @@ class SeleniumTest {
 
     @BeforeAll
     static void setUpAll() {
-        //WebDriverManager.firefoxdriver().setup();
-        WebDriverManager.chromiumdriver().setup();
+        WebDriverManager.firefoxdriver().setup();
+
     }
     @BeforeEach
     void setUp() {
 
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-dev-shm-usage");
+        FirefoxOptions options = new FirefoxOptions();
         options.addArguments("--no-sandbox");
+        options.addArguments("--disable-notifications");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--headless");
-        driver = new ChromeDriver(options);
 
-        driver = new ChromeDriver();
+        driver = new FirefoxDriver();
+        driver.get("http://localhost:7777");
     }
 
     @AfterEach
@@ -43,7 +45,7 @@ class SeleniumTest {
 
     @Test
     void shouldWorkWithValidPath() {
-        driver.get("http://localhost:7777");
+
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Фамилия Имя");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79998887700");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
@@ -53,6 +55,8 @@ class SeleniumTest {
         String actual = driver.findElement(By.cssSelector("[data-test-id='order-success']")).getText().trim();
 
         assertEquals(expected, actual);
+
     }
+
 
 }
