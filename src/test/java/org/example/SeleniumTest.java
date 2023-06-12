@@ -16,21 +16,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SeleniumTest {
 
-    private WebDriver driver;
-
-    @BeforeAll
-    static void setUpAll() {
-        WebDriverManager.firefoxdriver().setup();
-    }
+    WebDriver driver;
 
     @BeforeEach
     void setUp() {
-
-        driver = new FirefoxDriver();
+            driver = WebDriverManager.firefoxdriver().create();
     }
 
     @AfterEach
-    void tearDown() {
+    void teardown() {
         driver.quit();
     }
 
