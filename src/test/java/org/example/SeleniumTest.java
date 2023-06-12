@@ -21,14 +21,17 @@ class SeleniumTest {
 
     @BeforeAll
     static void setUpAll() {
-        WebDriverManager.firefoxdriver().setup();
+        //WebDriverManager.firefoxdriver().setup();
+        WebDriverManager.chromedriver().setup();
     }
     @BeforeEach
     void setUp() {
 
         ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox");
         options.addArguments("--headless");
-        options.addArguments("--sandbox");
+        driver = new ChromeDriver(options);
 
         driver = new ChromeDriver();
     }
