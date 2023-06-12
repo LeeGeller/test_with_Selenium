@@ -26,16 +26,16 @@ class SeleniumTest {
     @BeforeEach
     void setUp() {
 
-            driver = new FirefoxDriver();
-        }
+        driver = new FirefoxDriver();
+    }
 
     @AfterEach
-    void tearDown(){
+    void tearDown() {
         driver.quit();
     }
 
     @Test
-    void shouldWorkWithValidPath(){
+    void shouldWorkWithValidPath() {
         driver.get("http://localhost:9999");
 
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Фамилия Имя");
@@ -47,7 +47,6 @@ class SeleniumTest {
         String actual = driver.findElement(By.cssSelector("[data-test-id='order-success']")).getText().trim();
 
         assertEquals(expected, actual);
-
 
     }
 
