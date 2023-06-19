@@ -22,7 +22,7 @@ class SeleniumTest {
     private Capabilities FirefoxDriver;
 
     @BeforeAll
-    static void setUpAll() {
+    static void setUpDriver() {
         WebDriverManager.firefoxdriver().setup();
 
     }
