@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -18,6 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class SeleniumTest {
 
     private WebDriver driver;
+    private Capabilities FirefoxDriver;
 
     @BeforeAll
     static void setUpAll() {
@@ -27,7 +29,7 @@ class SeleniumTest {
     @BeforeEach
     void setUp() {
 
-        FirefoxOptions options = new FirefoxOptions();
+        FirefoxOptions options = new FirefoxOptions(FirefoxDriver);
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-notifications");
         options.addArguments("--disable-gpu");
@@ -35,7 +37,7 @@ class SeleniumTest {
         options.addArguments("--headless");
 
         driver = new FirefoxDriver();
-        driver.get("http://localhost:7777");
+        driver.get("http://localhost:9999");
     }
 
     @AfterEach
