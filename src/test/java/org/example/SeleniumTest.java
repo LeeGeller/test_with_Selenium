@@ -24,18 +24,18 @@ class SeleniumTest {
     @BeforeAll
     static void setUpDriver() {
         WebDriverManager.firefoxdriver().setup();
-
     }
 
     @BeforeEach
     void setUp() {
+
 
         FirefoxOptions options = new FirefoxOptions(FirefoxDriver);
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--headless");
 
-        driver = new FirefoxDriver();
+        driver = new FirefoxDriver(options);
         driver.get("http://localhost:9999");
     }
 
