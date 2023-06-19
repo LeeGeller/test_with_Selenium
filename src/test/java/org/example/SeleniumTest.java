@@ -26,13 +26,12 @@ class SeleniumTest {
         WebDriverManager.firefoxdriver().setup();
 
     }
+
     @BeforeEach
     void setUp() {
 
         FirefoxOptions options = new FirefoxOptions(FirefoxDriver);
         options.addArguments("--no-sandbox");
-        options.addArguments("--disable-notifications");
-        options.addArguments("--disable-gpu");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--headless");
 
@@ -42,6 +41,7 @@ class SeleniumTest {
 
     @AfterEach
     void tearDown() {
+
         driver.quit();
     }
 
