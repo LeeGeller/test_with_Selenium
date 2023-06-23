@@ -19,7 +19,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class SeleniumTest {
 
     private WebDriver driver;
-    private Capabilities FirefoxDriver;
 
     @BeforeAll
     static void setUpDriver() {
@@ -30,7 +29,7 @@ class SeleniumTest {
     void setUp() {
 
 
-        FirefoxOptions options = new FirefoxOptions(FirefoxDriver);
+        FirefoxOptions options = new FirefoxOptions();
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--headless");
